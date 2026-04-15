@@ -14,12 +14,11 @@ public class BackupTool {
         String outputFileName = args[2];
 
         // Get these from the json metadata file
-        String password = "vivovn123"; // Your text password
-        String salt = "0/tlBrMm7zxYZX7pClVPowLW5dsGETaHPaSazBqisHE"; // d5
-        String ivAndPwd = "QJ0cj05C6Q08JnfGz8Bz0gSezGXGFol+0xPiEIor/kW6jupBwNocpM+1MpV+bYAn/Te2ZnIOTYhhLPlE"; // d1
-        byte[] deviceSri = Base64.getDecoder().decode(
-                "KL7Y7qXxdm/ZMTa6UcG2KOBuy63X8j66zgQxp1WUb+5TEui4yLgAhv9ohT4X4NgpUQTgkY3qAXrMdQb1jCncXuM/+jDni0h5Sds+LNAC6Se3788tW8VvhT9m0VO4VbS7sEt9PatCgfIo/h7BiVqB7fYR1bimLwKxqffRHzK+fvEb6394KxJ0NRJCvhPK7iGrbhM4GJmQhyxAKKAgsd+QsXctuzDHLT8AdhvS18iGxhxrH5ylshzGdRTm6dRCAJSSOHxMXvTSMkqdKErx1iLGr0tlJk8rmXQbjnjo+6yAn5hR+0+O5iN91xNsdDNBSn6a0/6e1wtWyjbsoiZTephW5HYPN86fKmYRhJJMeWad7Qs"); // d3
-        byte[] iv_bytes = Base64.getDecoder().decode("ZxDwzhSjZUOnTQW1"); // d2
+        String password = ""; // Your text password
+        String salt = ""; // d5
+        String ivAndPwd = ""; // d1
+        byte[] deviceSri = Base64.getDecoder().decode(""); // d3
+        byte[] iv_bytes = Base64.getDecoder().decode(""); // d2
 
         VivoDecryptor main = new VivoDecryptor();
         if (main.beginDecryption(password, salt, ivAndPwd, deviceSri, iv_bytes)) {
