@@ -111,4 +111,14 @@ public class VivoDecryptor {
         cipher.init(2, secretKeySpec, new GCMParameterSpec(128, bArr));
         return cipher;
     }
+    public Cipher getEncryptionCipher(byte[] iv) throws Exception {
+        if (this.mPwdWorker == null) {
+            throw new Exception("Worker password is null");
+        }
+        SecretKeySpec secretKeySpec = new SecretKeySpec(Base64.getDecoder().decode(this.mPwdWorker),
+                AES_ALGORITHM);
+        Cipher cipher = Cipher.getInstance(AES_TRANSFORMATION);
+        cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec, new GCMParameterSpec(128, iv));
+        return cipher;
+    }
 }

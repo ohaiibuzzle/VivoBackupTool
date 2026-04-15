@@ -16,7 +16,7 @@ public class BytesUtils {
         }
         int i2 = 0;
         for (int i3 = 0; i3 < 4 && i3 < bArr.length; i3++) {
-            i2 |= (bArr[i3] & -1) << ((3 - i3) * 8);
+            i2 |= (bArr[i3] & 0xFF) << ((3 - i3) * 8);
         }
         return i2;
     }

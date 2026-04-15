@@ -77,11 +77,13 @@ public class DecryptedInputStream extends InputStream {
         }
 
         int encryptedBytesRead = 0;
-        try {
-            encryptedBytesRead = this.mInputStream.read(this.mBuffer, 0, i4);
-        } catch (IndexOutOfBoundsException e2) {
-            encryptedBytesRead = this.mInputStream.read(this.mBuffer);
+        int totalRead = 0;
+        while (totalRead < i4) {
+            int count = this.mInputStream.read(this.mBuffer, totalRead, i4 - totalRead);
+            if (count == -1) break;
+            totalRead += count;
         }
+        encryptedBytesRead = totalRead;
         this.readLimit = encryptedBytesRead;
         this.readIndex = 0;
         if (encryptedBytesRead == -1) {
